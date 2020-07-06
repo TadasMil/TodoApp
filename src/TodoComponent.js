@@ -29,13 +29,28 @@ export default class TodoComponent extends Component {
             })
       }
       clearList = () => {
-        console.log('handle clear')
+            this.setState({
+                items: []
+            })
       }
       handleSingleDelete = (id) => {
-        console.log(`handle single delete ${id}`)
+        const tempArr = this.state.items.filter((item) => item.id!==id);
+
+        this.setState({
+            items: tempArr
+        })
       }
+
       handleEdit = (id) => {
-        console.log(`handle edit ${id}`)
+        const tempArr = this.state.items.filter((item) => item.id!==id);
+        const selectedItem = this.state.items.find(item=> item.id === id);
+
+        this.setState({
+            items:tempArr,
+            item: selectedItem.title,
+            id: id,
+            editItem: true     
+        })
       }
     
     render() {
