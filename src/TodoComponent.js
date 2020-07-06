@@ -6,19 +6,27 @@ import TodoList from './components/TodoList';
 
 export default class TodoComponent extends Component {
     state = {
-        items: [{id: 1, title: 'wake up'},
-                {id: 2, title: 'Make breakfast'},
-              ],
+        items: [ ],
         id: uuidv4(), //Using uuid package to generate new ID
         item: '',
         editItem: false
       };
 
       handleChange = (e) => {
-        console.log('handle change')
-      }
+            this.setState({
+                item: e.target.value
+            })
+        }
       handleSubmit = (e) => {
-        console.log('handle submit')
+        e.preventDefault();
+            const newItem = { id: this.state.id, title: this.state.item }
+            const updatedItems = [...this.state.items, newItem]
+            this.setState({
+               items: updatedItems,
+               item: '',
+               id: uuidv4(),
+               editItem: false
+            })
       }
       clearList = () => {
         console.log('handle clear')
@@ -31,7 +39,7 @@ export default class TodoComponent extends Component {
       }
     
     render() {
-
+        
         return (
             <div className="container">
                 <div className="row">
