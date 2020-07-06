@@ -37,7 +37,7 @@ export default class TodoComponent extends Component {
                 <div className="row">
                     <div className=".col-10 mx-auto col-md-8 mt-5">
                         <h3 className="text-capitalize text-center">
-                        Pridėti nauja įrašą:
+                        Pridėti naują įrašą:
                         </h3>
                         <TodoInput item={this.state.item}
                         editItem={this.state.editItem}
